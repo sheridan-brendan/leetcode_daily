@@ -1,6 +1,0 @@
-Source for a bare-bones firefox extension to prompt a user with the
-https://leetcode.com daily problem when it's released.
-
-See
-https://firefox-source-docs.mozilla.org/devtools-user/about_colon_debugging/index.html
-for instructions related to loading a temporary extension.
