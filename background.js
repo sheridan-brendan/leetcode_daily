@@ -97,7 +97,7 @@ browser.alarms.get("newDaily", (alarm) => {
             when: Date.now() + msUntilMidnightUTC,
             periodInMinutes: 24 * 60
         })
-        console.log(`new periodic alarm set for ${msUntilMidnightUTC}ms from now`);
+        console.log(`new daily alarm set for ${msUntilMidnightUTC}ms from now`);
     }
 })
 
