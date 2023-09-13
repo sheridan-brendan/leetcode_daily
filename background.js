@@ -75,29 +75,40 @@ function handleAlarm(alarmInfo) {
     }
 }
 
+function checkAlarm() {
+    browser.alarms.get("newDaily", (alarm) => {
+        //no existing alarm, create a new one
+        if (!alarm) {
+            const now = Date.now();
+    
+            const nextMidnightUTC = new Date(now);
+            nextMidnightUTC.setUTCHours(0, 1, 0, 0);
+            nextMidnightUTC.setUTCDate(nextMidnightUTC.getUTCDate() + 1);
+            const msUntilMidnightUTC = nextMidnightUTC - now;
+    
+            
+            //Set alarm to UTC midnight (when leetcode updates) + 1m
+            //use 1day period for subsequent releases
+            browser.alarms.create("newDaily", {
+                when: Date.now() + msUntilMidnightUTC,
+                periodInMinutes: 24 * 60
+            })
+            console.log(`new daily alarm set for ${msUntilMidnightUTC}ms from now`);
+        }
+    })
+}
+
+function handleStartup() {
+    checkAlarm();
+    openDailyCodingChallenge();
+}
+
+function handleInstalled(details) {
+    console.log(details.reason);
+    checkAlarm();
+    openDailyCodingChallenge();
+}
+
 browser.alarms.onAlarm.addListener(handleAlarm);
-
-
-openDailyCodingChallenge();
-
-browser.alarms.get("newDaily", (alarm) => {
-    //no existing alarm, create a new one
-    if (!alarm) {
-        const now = Date.now();
-
-        const nextMidnightUTC = new Date(now);
-        nextMidnightUTC.setUTCHours(0, 1, 0, 0);
-        nextMidnightUTC.setUTCDate(nextMidnightUTC.getUTCDate() + 1);
-        const msUntilMidnightUTC = nextMidnightUTC - now;
-
-        
-        //Set alarm to UTC midnight (when leetcode updates) + 1m
-        //use 1day period for subsequent releases
-        browser.alarms.create("newDaily", {
-            when: Date.now() + msUntilMidnightUTC,
-            periodInMinutes: 24 * 60
-        })
-        console.log(`new daily alarm set for ${msUntilMidnightUTC}ms from now`);
-    }
-})
-
+browser.runtime.onStartup.addListener(handleStartup);
+browser.runtime.onInstalled.addListener(handleInstalled);

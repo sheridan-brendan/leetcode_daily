@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Leetcode daily",
-    "version": "0.1",
-    "description": "Launches a tab to the current leetcode daily on startup and when a new one is released (0:00 UTC); does nothing if problem is marked completed by leetcode.",
+    "name": "Leetcode Daily",
+    "version": "0.3",
+    "description": "Launches a tab to the current leetcode daily on startup and when a new one is released (0:00 UTC); does nothing if the problem is marked completed by leetcode.",
 
     "icons": {
         "48": "icons/uphill-48.png",
