@@ -1,4 +1,4 @@
-![Logo](https://raw.githubusercontent.com/sheridan-brendan/leetcode_daily/main/icons/uphill-96.png)
+![Logo](./icons/uphill-96.png)
 
 # leetcode_daily
 Source for a bare-bones firefox extension to prompt a user with the [leetcode](https://leetcode.com) daily problem when it's released.
