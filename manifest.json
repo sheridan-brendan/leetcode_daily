@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Leetcode Daily",
-    "version": "0.3",
+    "version": "0.4",
     "description": "Launches a tab to the current leetcode daily on startup and when a new one is released (0:00 UTC); does nothing if the problem is marked completed by leetcode.",
 
     "icons": {
